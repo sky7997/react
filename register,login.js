@@ -18,7 +18,7 @@ const App = () => {
     if (users.some(user => user.username === username)) {
       setMessage("Username already exists!");
       return;
-    }
+    } //The .some() method checks if at least one element in the array meets a condition.
 
     setUsers([...users, { username, password }]); // Add new user
     setMessage("Registration successful! Please log in.");
