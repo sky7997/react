@@ -15,9 +15,10 @@ const FetchData = () => {
 //useEffect(() => {...}, []);
   //[] (empty array) → Means this effect runs only once (on the first render).
   //after data fetched there will be no empty array
-  if (loading) return <h2>Loading...</h2>;
-
+   
   return (
+loading ? <h2>Loading...</h2> : 
+
     <ul>
       {data.slice(0, 10).map((item) => (
         <li key={item.id}>{item.title}</li>
