@@ -5,7 +5,8 @@ const FormHandling = () => {
   const [submittedValue, setSubmittedValue] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //Without preventDefault(), the form would refresh the page when submitted.
+
     setSubmittedValue(inputValue);
     setInputValue(""); // Clear input field after submission
   };
