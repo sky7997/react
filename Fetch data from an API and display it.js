@@ -12,7 +12,9 @@ const FetchData = () => {
         setLoading(false);
       });
   }, []);
-
+//useEffect(() => {...}, []);
+  //[] (empty array) → Means this effect runs only once (on the first render).
+  //after data fetched there will be no empty array
   if (loading) return <h2>Loading...</h2>;
 
   return (
