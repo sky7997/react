@@ -4,7 +4,11 @@ const ToggleButton = () => {
   const [isOn, setIsOn] = useState(false);
 
   return (
-    <button onClick={() => setIsOn(!isOn)}>
+    <button onClick={() => setIsOn(!isOn)} 
+     style={{
+        backgroundColor: isOn ? "black" : "white",
+        color: isOn ? "white" : "black",
+    >
       {isOn ? "ON" : "OFF"}
     </button>
   );
