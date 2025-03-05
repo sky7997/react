@@ -16,8 +16,8 @@ const InfiniteScroll = () => {
       setPage((p) => p + 1);
     }
   };
-  window.addEventListener("scroll", onScroll);
-  return () => window.removeEventListener("scroll", onScroll);
+  window.addEventListener("scroll", onScroll); //attach event listener
+  return () => window.removeEventListener("scroll", onScroll); // cleanup on unmount
 }, []);
 //useEffect(() => {...}, []) → Runs only once when the component mounts (empty [] dependency array).
   //window.innerHeight + window.scrollY → Gets current scroll position.
