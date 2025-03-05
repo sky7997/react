@@ -19,7 +19,12 @@ const InfiniteScroll = () => {
   window.addEventListener("scroll", onScroll);
   return () => window.removeEventListener("scroll", onScroll);
 }, []);
-
+//useEffect(() => {...}, []) → Runs only once when the component mounts (empty [] dependency array).
+  //window.innerHeight + window.scrollY → Gets current scroll position.
+//document.body.scrollHeight → Gets total page height.
+//if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 10)
+//Checks if the user has scrolled to the bottom (10px before the end).
+//If yes, calls setPage((p) => p + 1); → Increases the page number.
 
   return (
     <ul>
