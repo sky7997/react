@@ -8,7 +8,7 @@ const InfiniteScroll = () => {
     fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`)
       .then((res) => res.json())
       .then((newJobs) => setJobs((prev) => [...prev, ...newJobs]));
-  }, [page]);
+  }, [page]); //useEffect(() => {...}, [page]); → Runs the function whenever page changes.
 
   useEffect(() => {
   const onScroll = () => {
