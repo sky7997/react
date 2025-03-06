@@ -11,7 +11,7 @@ const App = () => {
   }, [time, task]);
 
   useEffect(() => {
-    if (!isRunning) return;
+    if (!isRunning) return;  // in return jsx we put isRunning as true
     const interval = setInterval(() => setTime((t) => t + 1000), 1000);
     return () => clearInterval(interval);
   }, [isRunning]);
