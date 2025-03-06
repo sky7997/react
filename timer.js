@@ -11,9 +11,9 @@ const App = () => {
   }, [time, task]);
 
   useEffect(() => {
-    if (!isRunning) return; 
+    if (!isRunning) return; //!isRunning means "if isRunning is false".
     const interval = setInterval(() => setTime((t) => t + 1000), 1000);
-    return () => clearInterval(interval);
+    return () => clearInterval(interval);  // so whenever [isRunning] changes it must clear old timer and make new timer so we use clearintervl(the timer data is stored in settime localstorage)
   }, [isRunning]);
 
   const formatTime = () => {
