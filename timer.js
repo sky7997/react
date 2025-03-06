@@ -29,7 +29,7 @@ const App = () => {
       <input value={task} onChange={(e) => setTask(e.target.value)} placeholder="Task name..." />
       <h2>{formatTime()}</h2>
       <button onClick={() => setIsRunning(true)}>Start</button>
-      <button onClick={() => setIsRunning(false)}>Pause</button>
+      <button onClick={() => setIsRunning((r)=>!r)}>Pause</button> //((r)=>!r) //pauses and continous if pressed again
       <button onClick={() => { setIsRunning(false); setTime(0); }}>Reset</button>
     </div>
   );
