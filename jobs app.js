@@ -8,16 +8,18 @@ src/
 
 -------------------------------------------------------
 
-import React from 'react';
+iimport React from 'react';
 
-const JobCard = ({ job, onBookmark }) => {
+const JobCard = ({ job, onBookmark, isBookmarked }) => {
   return (
     <div style={styles.card}>
       <h3>{job.title}</h3>
       <p><strong>Company:</strong> {job.company}</p>
       <p><strong>Location:</strong> {job.location}</p>
       <p><strong>Salary:</strong> {job.salary}</p>
-      <button onClick={() => onBookmark(job)} style={styles.button}>Bookmark</button>
+      <button style={styles.button} onClick={() => onBookmark(job)}>
+        {isBookmarked ? 'Unbookmark' : 'Bookmark'}
+      </button>
     </div>
   );
 };
@@ -27,20 +29,23 @@ const styles = {
     padding: '15px',
     border: '1px solid #ccc',
     borderRadius: '10px',
-    backgroundColor: '#f9f9f9',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+    backgroundColor: '#fff',
   },
   button: {
     marginTop: '10px',
     padding: '8px 12px',
+    borderRadius: '6px',
+    border: 'none',
+    cursor: 'pointer',
     backgroundColor: '#007bff',
     color: '#fff',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-  }
+    fontWeight: 'bold',
+  },
 };
 
 export default JobCard;
+
 
 ------------------------------------------
 import React from 'react';
@@ -54,7 +59,9 @@ const JobList = ({ jobs, onBookmark, bookmarkedJobs }) => {
           key={job.id}
           job={job}
           onBookmark={onBookmark}
-          isBookmarked={bookmarkedJobs.some((j) => j.id === job.id)}
+          isBookmarked={bookmarkedJobs.some((j) => j.id === job.id)} //The JobCard component needs to know whether a job is already bookmarked or not so that it can:
+                                                                            //Display the correct button label (Bookmark vs Unbookmark)
+                                                                              //Apply different styles (if you want later)
         />
       ))}
     </div>
