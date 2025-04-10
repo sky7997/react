@@ -43,6 +43,8 @@ function App() {
     }, 0); //The 0 at the end of reduce is the initial value for the accumulator (sum).
    // This means that when reduce starts processing the array, sum is initialized to 0. Then, the total will accumulate by adding the price of each selected add-on.
     
+   //In short, the sum in the reduce method is the accumulator, which starts at 0 and keeps a running total of the add-on prices. On each iteration, 
+   //it adds the price of the current add-on to sum, and at the end, it gives the total price of the selected add-ons.
    //The reduce method in JavaScript is a powerful and flexible way to iterate over an array and 
     //accumulate a single result based on the elements in that array. It reduces the array to a single value 
     //(like a sum, a product, an object, or any other accumulated result) through a callback function.
@@ -89,7 +91,7 @@ function App() {
     setSelectedAddOns(updatedAddOns);
     calculateTotals(selectedCoffee, selectedSize, quantity, updatedAddOns);
   };//For example:
-  //If selectedAddOns = ["Extra Shot"] and value = "Milk", then [...selectedAddOns, value] will create ["Extra Shot", "Milk"].
+//If selectedAddOns = ["Extra Shot"] and value = "Milk", then [...selectedAddOns, value] will create ["Extra Shot", "Milk"].
 
   const handleBrew = () => {
     if (!selectedCoffee || !selectedSize) {
