@@ -35,13 +35,17 @@ function App() {
     const coffee = coffeeOptions.find(c => c.name === coffeeName);
     const size = sizes.find(s => s.name === sizeName);
     if (!coffee || !size) return;
-
+      //(coffeeName, sizeName, qty, addons) we can put any names instead of these
     const coffeePrice = coffee.basePrice * size.multiplier;
     const addonsTotal = addons.reduce((sum, addonName) => {
       const addon = addOns.find(a => a.name === addonName);
       return sum + (addon ? addon.price : 0);
-    }, 0);
-
+    }, 0); //The 0 at the end of reduce is the initial value for the accumulator (sum).
+   // This means that when reduce starts processing the array, sum is initialized to 0. Then, the total will accumulate by adding the price of each selected add-on.
+    
+   //The reduce method in JavaScript is a powerful and flexible way to iterate over an array and 
+    //accumulate a single result based on the elements in that array. It reduces the array to a single value 
+    //(like a sum, a product, an object, or any other accumulated result) through a callback function.
     const subtotal = qty * (coffeePrice + addonsTotal);
     const tax = subtotal * TAX_RATE;
     const total = subtotal + tax;
@@ -84,7 +88,8 @@ function App() {
 
     setSelectedAddOns(updatedAddOns);
     calculateTotals(selectedCoffee, selectedSize, quantity, updatedAddOns);
-  };
+  };//For example:
+  //If selectedAddOns = ["Extra Shot"] and value = "Milk", then [...selectedAddOns, value] will create ["Extra Shot", "Milk"].
 
   const handleBrew = () => {
     if (!selectedCoffee || !selectedSize) {
@@ -120,7 +125,7 @@ function App() {
           <option value="">-- Choose --</option>
           {coffeeOptions.map((coffee, i) => (
             <option key={i} value={coffee.name}>
-              {coffee.name} - ${coffee.basePrice}
+              {coffee.name} - ${coffee.basePrice} {/*ex: expresso-$2 , icecream-$0.5 ,....*/}
             </option>
           ))}
         </select>
