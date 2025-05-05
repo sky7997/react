@@ -8,7 +8,7 @@ src/
 
 -------------------------------------------------------
 
-iimport React from 'react';
+import React from 'react';
 
 const JobCard = ({ job, onBookmark, isBookmarked }) => {
   return (
