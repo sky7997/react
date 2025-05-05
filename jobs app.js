@@ -17,7 +17,7 @@ const JobCard = ({ job, onBookmark, isBookmarked }) => {
       <p><strong>Company:</strong> {job.company}</p>
       <p><strong>Location:</strong> {job.location}</p>
       <p><strong>Salary:</strong> {job.salary}</p>
-      <button style={styles.button} onClick={() => onBookmark(job)}>
+      <button style={styles.button} onClick={() => onBookmark(job.id)}>
         {isBookmarked ? 'Unbookmark' : 'Bookmark'}
       </button>
     </div>
@@ -97,15 +97,16 @@ const JobPortal = () => {
     setJobs(dummyJobs);
   }, []);
 
-  const handleBookmark = (job) => {
-    const isBookmarked = bookmarkedJobs.some((j) => j.id === job.id);
-
+  const handleBookmark = (jobId) => {
+    const isBookmarked = bookmarkedJobs.some(j => j.id === jobId);
+  
     if (isBookmarked) {
-      // Remove from bookmarks
-      setBookmarkedJobs(bookmarkedJobs.filter((j) => j.id !== job.id));
+      setBookmarkedJobs(bookmarkedJobs.filter(j => j.id !== jobId));
     } else {
-      // Add to bookmarks
-      setBookmarkedJobs([...bookmarkedJobs, job]);
+      const jobToAdd = jobs.find(j => j.id === jobId);
+      if (jobToAdd) {
+        setBookmarkedJobs([...bookmarkedJobs, jobToAdd]);
+      }
     }
   };
 
