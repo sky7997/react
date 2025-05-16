@@ -16,7 +16,7 @@ const InfiniteScroll = () => {
       setPage((p) => p + 1);
     }
   };
-  window.addEventListener("scroll", onScroll); //attach event listener
+  window.addEventListener("scroll", onScroll); //"scroll" is inbuilt code name if u rename or use other name it won't trigger scroll 
   return () => window.removeEventListener("scroll", onScroll); // cleanup on unmount
 }, []);
 //useEffect(() => {...}, []) → Runs only once when the component mounts (empty [] dependency array).
