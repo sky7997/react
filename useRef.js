@@ -27,39 +27,43 @@ function PreviousValueExample() {
 
 export default PreviousValueExample
 ..................................................................................
-  import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
-function Stopwatch() {
-  const [time, setTime] = useState(0);
-  const intervalRef = useRef(null);
+const UsinguseRef=()=>{
+   
 
-  const startTimer = () => {
-    if (intervalRef.current !== null) return; // Prevent multiple intervals
-    intervalRef.current = setInterval(() => {
-      setTime((prevTime) => prevTime + 1);
-    }, 1000);
-  };
-
-  const stopTimer = () => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-  };
-
-  const resetTimer = () => {
-    stopTimer();
-    setTime(0);
-  };
-
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h2>Stopwatch</h2>
-      <h1>{time}s</h1>
-      <button onClick={startTimer} style={{ marginRight: '10px' }}>Start</button>
-      <button onClick={stopTimer} style={{ marginRight: '10px' }}>Stop</button>
-      <button onClick={resetTimer}>Reset</button>
-    </div>
-  );
-}
-
-export default Stopwatch;
-
+   
+      const [time, setTime] = useState(0);
+      const intervalRef=useRef()
+    
+      const startTimer = () => {
+       if (intervalRef.current !== null) return //intervalRef.current !== null implies the timer is running.
+       intervalRef.current=setInterval(()=>{
+        setTime(prev=>prev+1)
+       },1000)
+      };
+    
+      const stopTimer = () => {
+       clearInterval(intervalRef.current)
+       intervalRef.current=null //If we didn’t set it to null, startTimer() might think an interval is still running and refuse to start a new one.
+      };
+    
+      const resetTimer = () => {
+        stopTimer();
+        setTime(0);
+      };
+    
+      return (
+        <div style={{ padding: '20px', fontFamily: 'Arial' }}>
+          <h2>Stopwatch</h2>
+          <h1>{time}s</h1>
+          <button onClick={startTimer} style={{ marginRight: '10px' }}>Start</button>
+          <button onClick={stopTimer} style={{ marginRight: '10px' }}>Stop</button>
+          <button onClick={resetTimer}>Reset</button>
+        </div>
+      );
+    }
+    
+    
+    
+export default UsinguseRef
