@@ -47,29 +47,27 @@ import React, { useState, useMemo } from 'react';
 
 function ExpensiveComponent() {
   const [count, setCount] = useState(0);
-  const [otherCount, setOtherCount] = useState(0);
+
 
   const expensiveCalculation = (num) => {
     console.log('Calculating...');
     let result = 0;
-    for (let i = 0; i < 100000000; i++) {
-      result += num;
+    for (let i=0; i <100000000;i++){
+        result+=num
     }
+
+   
     return result;
   };
 
-  // Memoize the result
-  const memoizedValue = useMemo(() => expensiveCalculation(count), [count]);//same like use effect },[])
-
+const memoizedValue=useMemo(()=>expensiveCalculation(count),[count])
   return (
     <div>
       <h2>Expensive Calculation</h2>
       <p>Count: {count}</p>
       <p>Calculated Value: {memoizedValue}</p>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
-      <button onClick={() => setOtherCount(otherCount + 1)}>
-        Increment Other Count
-      </button>
+      
     </div>
   );
 }
