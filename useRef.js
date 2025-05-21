@@ -34,7 +34,7 @@ const UsinguseRef=()=>{
 
    
       const [time, setTime] = useState(0);
-      const intervalRef=useRef()
+      const intervalRef=useRef(null)
     
       const startTimer = () => {
        if (intervalRef.current !== null) return //intervalRef.current !== null implies the timer is running.
