@@ -19,7 +19,7 @@ function FilteredList() {
     return items.filter(item =>
       item.toLowerCase().includes(search.toLowerCase())
     );
-  }, [search]);
+  }, [search]);//same like use effect },[])
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
@@ -59,7 +59,7 @@ function ExpensiveComponent() {
   };
 
   // Memoize the result
-  const memoizedValue = useMemo(() => expensiveCalculation(count), [count]);
+  const memoizedValue = useMemo(() => expensiveCalculation(count), [count]);//same like use effect },[])
 
   return (
     <div>
